@@ -19,5 +19,7 @@ public class NoBoringTest {
         testing(NoBoring.noBoringZeros(1050), 105);
         testing(NoBoring.noBoringZeros(-1050), -105);
         testing(NoBoring.noBoringZeros(0), 0);
+
+        testing(NoBoring.noBoringZerosCooler(1450), 145);
     }
 }
