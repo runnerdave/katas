@@ -61,6 +61,31 @@ public class StockList {
         return str.toString();
     }
 
+    public static String stockSummaryBetter(String[] lstOfArt, String[] lstOf1stLetter) {
+        if (lstOfArt.length <= 0 && lstOf1stLetter.length <= 0)
+            return "";
+
+        Map<String, List<String>> map = Arrays.stream(lstOfArt).collect(Collectors.groupingBy(s -> s.substring(0, 1)));
+
+//        System.out.println(map);
+//        System.out.println(lstOf1stLetter);
+
+        String myStr = Arrays.stream(lstOf1stLetter)
+                                //.peek(init -> System.out.println("init" + init))
+                                .map(initial -> String.format("(%s : %d)",
+                                                                                initial,
+                                                                                map.getOrDefault(initial, Arrays
+                                                                                                .asList("XX 0"))
+                                                                                .stream()
+                                                                                //.peek(k->System.out.println("k:" + k))
+                                                                                .collect(Collectors.summingInt(v->Integer.valueOf(v.split(" ")[1])))))
+                                                    .collect(Collectors.joining(" - "));
+
+
+
+        return myStr;
+    }
+
     private static class Book {
         public final String category;
         public final String code;
@@ -77,9 +102,12 @@ public class StockList {
         if (lstOfArt.length == 0 || lstOf1stLetter.length == 0)
             return "";
         Map<String, Integer> categoryCounts = Arrays.stream(lstOfArt)
+                //.peek(System.out::println)
                 .map(Book::new)
+                //.peek(b->System.out.println(b.code))
                 .collect(Collectors.groupingBy(book -> book.category,
                         Collectors.summingInt(book -> book.quantity)));
+//        System.out.println(categoryCounts);
         return Arrays.stream(lstOf1stLetter)
                 .map(initial -> String.format("(%s : %d)",
                         initial, categoryCounts.getOrDefault(initial, 0)))
