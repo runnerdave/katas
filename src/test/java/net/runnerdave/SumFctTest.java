@@ -25,7 +25,10 @@ public class SumFctTest {
     public void test3() {
         assertEquals(BigInteger.valueOf(14098308), SumFct.perimeter(BigInteger.valueOf(30)));
     }
-
+    @Test
+    public void test4() {
+        assertEquals(BigInteger.valueOf(80), SumFct.perimeterBigInt(BigInteger.valueOf(5)));
+    }
 
 
 }
