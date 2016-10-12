@@ -29,6 +29,13 @@ public class SumFctTest {
     public void test4() {
         assertEquals(BigInteger.valueOf(80), SumFct.perimeterBigInt(BigInteger.valueOf(5)));
     }
-
+    @Test
+    public void test5() {
+        assertEquals(BigInteger.valueOf(14098308), SumFct.perimeterBigInt(BigInteger.valueOf(30)));
+    }
+    @Test
+    public void testFibonacciBigInt() {
+        assertEquals(BigInteger.valueOf(5), SumFct.fibonacciBigInt(BigInteger.valueOf(5)));
+    }
 
 }
