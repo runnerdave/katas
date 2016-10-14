@@ -37,4 +37,19 @@ public class FloodDepthTest {
 	public void test5() {
 		assertEquals(1, FloodDepth.solution(new int[] { 3, 1, 2 }));
 	}
+
+	@Test
+	public void test6() {
+		assertEquals(2, FloodDepth.solution(new int[] { 3, 1, 4, 2, 5, 1, 2 }));
+	}
+
+    @Test
+    public void test7() {
+        assertEquals(1, FloodDepth.solution(new int[] { 3, 2, 4}));
+    }
+
+    @Test
+    public void test8() {
+        assertEquals(0, FloodDepth.solution(new int[] { 1, 2, 3 }));
+    }
 }
