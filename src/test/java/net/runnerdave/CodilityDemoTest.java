@@ -1,6 +1,10 @@
 package net.runnerdave;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
 
@@ -48,5 +52,11 @@ public class CodilityDemoTest {
     @Test
     public void test08() {
         assertEquals(1, CodilityDemo.solutionBigIntWithMap(new int[]{2,2,2}));
+    }
+
+    @After
+    public void cleanup() {
+        CodilityDemo.mapBigIntLeft = new HashMap<>();
+        CodilityDemo.mapBigIntRight = new HashMap<>();
     }
 }

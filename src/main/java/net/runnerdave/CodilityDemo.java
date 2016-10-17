@@ -51,15 +51,14 @@ public class CodilityDemo {
         return equilibrium;
     }
 
-    private static Map<BigInteger, BigInteger> mapBigIntLeft = new HashMap<>();
-    private static Map<BigInteger, BigInteger> mapBigIntRight = new HashMap<>();
+    public static Map<BigInteger, BigInteger> mapBigIntLeft = new HashMap<>();
+    public static Map<BigInteger, BigInteger> mapBigIntRight = new HashMap<>();
 
 
     public static int solutionBigIntWithMap(int[] A) {
         int equilibrium = -1;
         for (int i = 0; i < A.length; i++) {
             BigInteger rightTotal = BigInteger.ZERO;
-            //for (int j = i + 1; j < A.length; j++) {
             for (int j = A.length - 1; j > i; j--) {
                 BigInteger val = mapBigIntRight.get(BigInteger.valueOf(j+1));
                 if (val != null) {
