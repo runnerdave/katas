@@ -7,6 +7,11 @@
     <version>1.0-SNAPSHOT</version>
     <name>katas</name>
     <url>http://maven.apache.org</url>
+
+	<properties>
+		<main.class>net.runnerdave.App</main.class>
+	</properties>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
