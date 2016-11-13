@@ -1,68 +1,50 @@
 package net.runnerdave;
 
+import java.util.OptionalInt;
+import java.util.stream.IntStream;
+
 /**
  * Created by David A. Jimene (e67997) on 11/11/2016.
  */
 public class TriangularTreasure {
     public static int triangular(int n) {
-        return 0;
+        return n == 1 ? n : n * (n + 1) / 2;
     }
 
     public static void main(String[] args) {
-//        String[][] matrix = fillMatrix(3);
-//        System.out.println(laidAsTriangle(matrix));
-//        printStaticTriangle(6);
+        System.out.println(laidAsTriangle(5));
     }
 
-    public static void jumper(int qty) {
-        for (int i = 0; i < (qty/2 + 1); i++) {
-
-        }
+    public static int triangularFunctional(int n) {
+        return IntStream.range(1, n + 1).peek(System.out::println).sum();
     }
-    
-    public static String laidAsTriangle(String[][] matrix) {
+
+    public static double reverseTriangular(int y) {
+        return solveQuadratic(y);
+    }
+
+    public static String laidAsTriangle(int side) {
         String str = "";
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = i; j < matrix.length; j++) {
-                    if (matrix[i][j].equals("*")) {
-                        str += matrix[i][j];
-                    } else {
-                        str += " ";
-                    }
+        for (int i = side; i >= 0; i--) {
+            for (int j = i; j > 0; j--) {
+                str += "*";
             }
             str += "\n";
         }
         return str;
     }
 
-    public static void printStaticTriangle(int size) {
-        int i, j;
-        for(i=size;i>=1;i--)
-        {
-            for(j=1;j<=i;j++)
-            {
-                System.out.print("*");
-            }
-            System.out.println();
-        }
+    public static double solveQuadratic(int y) {
+        final int a = 1;
+        final int b = 1;
+        final int c = -2;
+
+        double temp1 = Math.sqrt(b * b - 4 * a * c * y);
+
+        double root1 = (-b + temp1) / (2 * a);
+
+        return root1;
     }
 
-    public static String[][] fillMatrix(int dots) {
-        String[][] matrix = new String[dots/2 + 1][dots/2 + 1];
-        boolean across = true;
-        matrix[0][0] = "*";
-        int i = 0;
-        int j = 0;
-        while(dots>0) {
-            if(across){
-                i++;
-                across = false;
-            } else {
 
-            }
-            matrix[i][j] = "";
-            dots--;
-        }
-        return matrix;
-    }
 }
