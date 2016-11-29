@@ -74,4 +74,14 @@ public class NoThreePeatsTest {
             assertThat(e, Matchers.isA((Class<Exception>) e.getClass()));
         }
     }
+
+    @Test
+    public void testSortSolution6() {
+        try {
+            NoThreePeats.solutionWithMapLong(array4);
+            fail("it should have thrown an exception");
+        } catch (Exception e) {
+            assertThat(e, Matchers.isA((Class<Exception>) e.getClass()));
+        }
+    }
 }
