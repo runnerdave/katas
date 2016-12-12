@@ -44,6 +44,23 @@ public class ArithmeticFunction {
         return op.operate(a,b);
     }
 
+    static Map<String, BinaryOperator<Integer>> myMap = new HashMap<>();
+
+    static {
+        myMap.put("add", (u,t)->u+t);
+        myMap.put("subtract", (u,t)->u-t);
+        myMap.put("multiply", (u,t)->u*t);
+        myMap.put("divide", (u,t)->u/t);
+    }
+
+    public static int arithmeticMyCool(int a, int b, String operator) {
+        return arithmeticMyCool(a, b, myMap.get(operator));
+    }
+
+    private static Integer arithmeticMyCool(int a, int b, BinaryOperator<Integer> function) {
+        return function.apply(a,b);
+    }
+
 
     static Map<String, BinaryOperator<Integer>> operators = new HashMap<>();
 
@@ -55,10 +72,10 @@ public class ArithmeticFunction {
     }
 
     public static int arithmeticCool(int a, int b, String operator) {
-        return arithmetic(a, b, operators.get(operator));
+        return arithmeticCool(a, b, operators.get(operator));
     }
 
-    private static Integer arithmetic(int a, int b, BinaryOperator<Integer> operator) {
+    private static Integer arithmeticCool(int a, int b, BinaryOperator<Integer> operator) {
         return Optional.ofNullable(operator).orElse((x, y) -> 0).apply(a, b);
     }
 
