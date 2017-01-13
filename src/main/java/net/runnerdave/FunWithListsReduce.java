@@ -32,10 +32,18 @@ public class FunWithListsReduce {
      Given the list: 1 -> 2 -> 3 -> 4, the function (acc, curr) => acc * curr and an initial value of 1, reduce should return 24
      */
 
+    public static <T> T reduce(Node<T> linkedList, BiFunction<T, T, T> accumulator, T initialValue){
+        return (linkedList == null) ? initialValue : reduce(linkedList.next, accumulator, accumulator.apply(initialValue, linkedList.data));
 
-    public static <T extends Node<T>> T reduce(Node<T> linkedList, BiFunction<T, T, T> accumulator, T initialValue){
-        Node<T> nodeValue = Stream.of(linkedList).reduce(initialValue, (BinaryOperator<Node<T>>) accumulator);
-        return nodeValue.data;
+    }
+
+    public static <T> T reduceSimpler(Node<T> head, BiFunction<T, T, T> f, T init) {
+        T acc = init;
+        while (head != null) {
+            acc = f.apply(acc, head.data);
+            head = head.next;
+        }
+        return acc;
     }
 }
 
