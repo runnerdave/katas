@@ -12,15 +12,15 @@ public class ArrayPrinterTest {
      * and then the method print2DStringArrayIterators should not have a break command.
      */
     @Test
-    public void createSquare2dArray(){
+    public void createSquare2dArray() {
 
         int squareWidth = 16;
 
-        String[][]square = new String [squareWidth][];
+        String[][] square = new String[squareWidth][];
 
-        for(int row=0; row<square.length; row++){
+        for (int row = 0; row < square.length; row++) {
             square[row] = new String[squareWidth];
-            for(int i=0; i< (squareWidth+1); i++){
+            for (int i = 0; i < (squareWidth + 1); i++) {
                 square[row][i] = "*";
             }
         }
