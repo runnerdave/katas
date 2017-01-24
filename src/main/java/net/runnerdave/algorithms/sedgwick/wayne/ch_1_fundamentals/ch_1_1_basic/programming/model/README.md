@@ -83,6 +83,14 @@ b. System.out.println('b' + 'c');
 c. System.out.println((char) ('a' + 4));
 
 Explain each outcome.
+
+my solution:
+
+a. b
+
+b. a number (197)
+
+c. e
 ## 1.1.9 
 Write a code fragment that puts the binary representation of a positive integer N
 into a String s.
@@ -115,6 +123,7 @@ What does the following code fragment print?
     a[i] = a[a[i]];
     for (int i = 0; i < 10; i++)
     System.out.println(i);
+my solution: 10 (wrong, prints 0 to 9 one digit per line)
 ## 1.1.13 
 Write a code fragment to print the transposition (rows and columns changed)
 of a two-dimensional array with M rows and N columns.

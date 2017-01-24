@@ -2,7 +2,8 @@ package net.runnerdave.algorithms.sedgwick.wayne.ch_1_fundamentals.ch_1_1_basic.
 
 import net.runnerdave.algorithms.sedgwick.wayne.StdOut;
 
-import java.io.IOException;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 /**
  * Created by David A. Jiménez (e67997) on 24/01/2017.
@@ -57,8 +58,7 @@ public class Ex_1_1_from_1_to_15 {
         System.out.println("==1.1.6==");
         int f = 0;
         int g = 1;
-        for (int i = 0; i <= 15; i++)
-        {
+        for (int i = 0; i <= 15; i++) {
             StdOut.println(f);
             f = f + g;
             g = f - g;
@@ -68,8 +68,8 @@ public class Ex_1_1_from_1_to_15 {
         System.out.println("==1.1.7==");
         //a
         double t = 9.0;
-        while (Math.abs(t - 9.0/t) > .001)
-            t = (9.0/t + t) / 2.0;
+        while (Math.abs(t - 9.0 / t) > .001)
+            t = (9.0 / t + t) / 2.0;
         StdOut.printf("%.5f\n", t);
         //b
         int sum = 0;
@@ -78,9 +78,101 @@ public class Ex_1_1_from_1_to_15 {
                 sum++;
         StdOut.println(sum);
 
+        //1.1.8
+        System.out.println("==1.1.8==");
+
+        System.out.println('b');
+
+        System.out.println('b' + 'c');
+
+        System.out.println((char) ('a' + 4));
+
+        //1.1.9
+        System.out.println("==1.1.9==");
+        int twoHundredAndThirtyThree = 233;
+        System.out.println(binaryRepresentation(twoHundredAndThirtyThree));
+        System.out.println(binaryRepresentation(a));
+        System.out.println(binaryRepresentation(b));
+        System.out.println(binaryRepresentation(0));
+
+        //1.1.11
+        System.out.println("==1.1.11==");
+        boolean[][] twoByTwo = {{true, false}, {false, true}};
+        printArrayWithAsterisks(twoByTwo);
+        boolean[][] twoByThree = {{true, false}, {false, true}, {false, true}};
+        printArrayWithAsterisks(twoByThree);
+        boolean[][] threeByTwo = {{true, false, true}, {false, true, true}};
+        printArrayWithAsterisks(threeByTwo);
+
+        //1.1.12
+        System.out.println("==1.1.12==");
+        int[] oneTwelve = new int[10];
+        for (int i = 0; i < 10; i++)
+            oneTwelve[i] = 9 - i;
+        for (int i = 0; i < 10; i++)
+            oneTwelve[i] = oneTwelve[oneTwelve[i]];
+        for (int i = 0; i < 10; i++)
+            System.out.println(i);
+
+        //1.1.13
+        System.out.println("==1.1.13==");
+        printArrayWithAsterisks(transposeMatrix(twoByThree));
+
     }
 
     public static boolean strictlyBetweenOneAndZero(double x, double y) {
-        return ((0< x && x<1) && (0<y && y<1)) ? true : false;
+        return ((0 < x && x < 1) && (0 < y && y < 1)) ? true : false;
+    }
+
+    public static String binaryRepresentation(int myInt) {
+        if (myInt != 0) {
+            Deque<Integer> stack = new ArrayDeque<>();
+            while (myInt > 0) {
+                stack.push(myInt % 2);
+                myInt = myInt / 2;
+            }
+            StringBuilder sb = new StringBuilder();
+            while (!stack.isEmpty()) {
+                sb.append(stack.pop());
+            }
+            return sb.toString();
+        } else {
+            return "0";
+        }
+    }
+
+    public static void printArrayWithAsterisks(boolean[][] biDimensionalArray) {
+        System.out.print("  ");
+        for (int i = 0; i < biDimensionalArray.length; i++) {
+            System.out.print(i);
+        }
+        System.out.print("\n\r");
+        for (int i = 0; i < biDimensionalArray.length; i++) {
+            System.out.print(i + " ");
+            for (int j = 0; j < biDimensionalArray[0].length; j++) {
+                if (biDimensionalArray[i][j]) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.print("\n\r");
+        }
+    }
+    //TODO: needs fixing, throws a nullpointer
+    public static boolean[][] transposeMatrix(boolean[][] biDimensionalArray) {
+        int size = 0;
+        if (biDimensionalArray[0].length > biDimensionalArray.length) {
+            size = biDimensionalArray[0].length;
+        } else {
+            size = biDimensionalArray.length;
+        }
+        boolean[][] transposed = new boolean[size][];
+        for (int i = 0; i < biDimensionalArray[0].length; i++) {
+            for (int j = 0; j < biDimensionalArray.length; j++) {
+                 transposed[i][j]=biDimensionalArray[j][i];
+            }
+        }
+        return transposed;
     }
 }
