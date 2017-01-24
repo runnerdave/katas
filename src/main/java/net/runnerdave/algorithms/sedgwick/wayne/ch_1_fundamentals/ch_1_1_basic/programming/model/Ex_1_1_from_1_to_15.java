@@ -103,6 +103,13 @@ public class Ex_1_1_from_1_to_15 {
         printArrayWithAsterisks(twoByThree);
         boolean[][] threeByTwo = {{true, false, true}, {false, true, true}};
         printArrayWithAsterisks(threeByTwo);
+        boolean[][] twoByOne = new boolean[2][1];
+        twoByOne[0][0] = true;
+        twoByOne[1][0] = true;
+        printArrayWithAsterisks(twoByOne);
+        System.out.println("twoByOne.length:" + twoByOne.length);
+        System.out.println("twoByOne[0].length:" + twoByOne[0].length);
+
 
         //1.1.12
         System.out.println("==1.1.12==");
@@ -116,8 +123,30 @@ public class Ex_1_1_from_1_to_15 {
 
         //1.1.13
         System.out.println("==1.1.13==");
+        System.out.println("Before:");
+        printArrayWithAsterisks(twoByThree);
+        System.out.println("After:");
         printArrayWithAsterisks(transposeMatrix(twoByThree));
 
+        //1.1.14 -- need to read about logarithms
+
+        //1.1.15
+
+
+    }
+
+    public static int[] histogram(int[] series, int key) {
+        int[] m = new int[key];
+        int counter = 0;
+        for (int i = 0; i < series.length; i++) {
+            if (series[i] == key) {
+                counter++;
+            }
+        }
+        for (int i = 0; i < m.length; i++) {
+            m[counter] = counter;
+        }
+        return m;
     }
 
     public static boolean strictlyBetweenOneAndZero(double x, double y) {
@@ -159,15 +188,9 @@ public class Ex_1_1_from_1_to_15 {
             System.out.print("\n\r");
         }
     }
-    //TODO: needs fixing, throws a nullpointer
+
     public static boolean[][] transposeMatrix(boolean[][] biDimensionalArray) {
-        int size = 0;
-        if (biDimensionalArray[0].length > biDimensionalArray.length) {
-            size = biDimensionalArray[0].length;
-        } else {
-            size = biDimensionalArray.length;
-        }
-        boolean[][] transposed = new boolean[size][];
+        boolean[][] transposed = new boolean[biDimensionalArray[0].length][biDimensionalArray.length];
         for (int i = 0; i < biDimensionalArray[0].length; i++) {
             for (int j = 0; j < biDimensionalArray.length; j++) {
                  transposed[i][j]=biDimensionalArray[j][i];
