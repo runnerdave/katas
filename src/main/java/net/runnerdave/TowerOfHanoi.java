@@ -1,66 +1,26 @@
 package net.runnerdave;
 
+import java.util.Scanner;
+
 /**
  * Created by David A. Jiménez (e67997) on 23/01/2017.
  */
 public class TowerOfHanoi {
-    static int[] peg1;
-    static int[] peg2;
-    static int[] peg3;
-
-//    static boolean isSetupForStart() {
-//        return peg2.
-//    }
-
-    static void initialize(int size) {
-        peg1 = new int[size];
-        peg2 = new int[size];
-        peg3 = new int[size];
-
-        for (int i = 0; i < size; i++) {
-            peg1[i] = size - i;
+    public void solve(int n, String start, String auxiliary, String end) {
+        if (n == 1) {
+            System.out.println(start + " -> " + end);
+        } else {
+            solve(n - 1, start, end, auxiliary);
+            System.out.println(start + " -> " + end);
+            solve(n - 1, auxiliary, start, end);
         }
     }
 
-    static void solve(int size) {
-        initialize(size);
-
-    }
-
-    static void moveDisc() {
-        if(occupiedSlots(peg1) > 0){
-
-        }
-    }
-
-    static int occupiedSlots(int[] array) {
-        int count = 0;
-        for (int i : array
-                ) {
-            if (i != 0) {
-                count++;
-            }
-        }
-        return count;
-    }
-
-    static int removePegTopDisc(int[] array) {
-        int top = 0;
-        for (int i = 0; i < array.length; i++) {
-            int current=array[i];
-            int prev = 0;
-            if (i>0) {
-                prev = array[i-1];
-            }
-            if (current==0) {
-                top=prev;
-                array[i] = 0;
-                break;
-            } else if(i == array.length-1){
-                top=current;
-                array[i] = 0;
-            }
-        }
-        return top;
+    public static void main(String[] args) {
+        TowerOfHanoi towersOfHanoi = new TowerOfHanoi();
+        System.out.print("Enter number of discs: ");
+        Scanner scanner = new Scanner(System.in);
+        int discs = scanner.nextInt();
+        towersOfHanoi.solve(discs, "A", "B", "C");
     }
 }

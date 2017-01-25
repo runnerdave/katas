@@ -154,10 +154,9 @@ public class Ex_1_1_from_1_to_15 {
 
     public static int[] histogram(int[] series, int M) {
         int[] m = new int[M];
-        int counter = 0;
         for (int i = 0; i < series.length; i++) {
             if(series[i] < M) {
-                m[series[i]] = m[i]++;
+                m[series[i]]++;
             }
         }
         return m;
