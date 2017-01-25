@@ -1,6 +1,7 @@
 package net.runnerdave.algorithms.sedgwick.wayne.ch_1_fundamentals.ch_1_1_basic.programming.model;
 
 import net.runnerdave.algorithms.sedgwick.wayne.StdOut;
+import net.runnerdave.algorithms.sedgwick.wayne.StdRandom;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -131,20 +132,33 @@ public class Ex_1_1_from_1_to_15 {
         //1.1.14 -- need to read about logarithms
 
         //1.1.15
+        System.out.println("==1.1.15==");
+        int N = 30;
+        int M = 10;
+
+        int[] n = new int[N];
+        for (int i = 0; i < N; i++)
+            n[i] = StdRandom.uniform(M);
+
+        for (int i = 0; i < N; i++)
+            StdOut.printf("%2d", n[i]);
+
+        int[] h = histogram(n, M);
+
+        StdOut.println("\n");
+        for (int i = 0; i < M; i++)
+            StdOut.printf("%4d", h[i]);
 
 
     }
 
-    public static int[] histogram(int[] series, int key) {
-        int[] m = new int[key];
+    public static int[] histogram(int[] series, int M) {
+        int[] m = new int[M];
         int counter = 0;
         for (int i = 0; i < series.length; i++) {
-            if (series[i] == key) {
-                counter++;
+            if(series[i] < M) {
+                m[series[i]] = m[i]++;
             }
-        }
-        for (int i = 0; i < m.length; i++) {
-            m[counter] = counter;
         }
         return m;
     }

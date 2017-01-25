@@ -17,7 +17,7 @@ package net.runnerdave.algorithms.sedgwick.wayne;
  *  allows you to create drawings consisting of points, lines, and curves
  *  in a window on your computer and to save the drawings to a file.
  *
- *  Todo
+ *  Toda
  *  ----
  *    -  Add support for gradient fill, etc.
  *    -  Fix setCanvasSize() so that it can only be called once.
