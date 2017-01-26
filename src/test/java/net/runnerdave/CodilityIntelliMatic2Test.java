@@ -16,7 +16,6 @@ public class CodilityIntelliMatic2Test {
     @Test
     public void testSolution1() {
         CodilityIntelliMatic2 cm = new CodilityIntelliMatic2();
-        cm.populatePhoneCalls(CodilityIntelliMatic2.splitLog(log));
 
         assertEquals(900, cm.solution(log));
     }
@@ -29,11 +28,19 @@ public class CodilityIntelliMatic2Test {
     }
 
     @Test
+    public void testCalculateTotalDurationPerPhone() {
+        CodilityIntelliMatic2 cm = new CodilityIntelliMatic2();
+        cm.populatePhoneCalls(CodilityIntelliMatic2.splitLog(log));
+        assertEquals(301, cm.calculateTotalDurationPerPhone(cm.phoneCalls.get("701-080-080")));
+        assertEquals(367, cm.calculateTotalDurationPerPhone(cm.phoneCalls.get("400-234-090")));
+    }
+
+    @Test
     public void testCalculateTotalPerPhone() {
         CodilityIntelliMatic2 cm = new CodilityIntelliMatic2();
         cm.populatePhoneCalls(CodilityIntelliMatic2.splitLog(log));
         assertEquals(900, cm.calculateTotalPerPhone(cm.phoneCalls.get("701-080-080")));
-        assertEquals(900, cm.calculateTotalPerPhone(cm.phoneCalls.get("400-234-090")));
+        assertEquals(951, cm.calculateTotalPerPhone(cm.phoneCalls.get("400-234-090")));
     }
 
     @Test
