@@ -14,12 +14,12 @@ public class Ex_1_1_16 {
     }
 
     public static void main(String[] args) {
-//        System.out.println(exR1(1));
+        System.out.println(exR1(1));
 //        System.out.println(exR1(2));
         System.out.println(exR1(3));
-//        System.out.println(exR1(4));
-//        System.out.println(exR1(5));
-//        System.out.println(exR1(6));
+        System.out.println(exR1(4));
+        System.out.println(exR1(5));
+        System.out.println(exR1(6));
         System.out.println(counter);
         System.out.println(counter2);
 
