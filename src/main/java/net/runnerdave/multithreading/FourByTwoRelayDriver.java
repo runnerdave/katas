@@ -4,6 +4,7 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  * Created by runnerdave on 11/02/17.
+ * taken from: http://stackoverflow.com/questions/20286657/executing-threads-in-a-threadgroup-serially-in-java
  */
 public class FourByTwoRelayDriver {
     public static void main(String[] args){

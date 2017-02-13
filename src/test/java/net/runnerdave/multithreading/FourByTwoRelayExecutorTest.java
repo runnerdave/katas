@@ -39,11 +39,12 @@ public class FourByTwoRelayExecutorTest {
                 assertEquals(true, s.getStartTime() < f.getEndTime());
             }
         }
-        System.out.println(anMap.get("Lars - GER").getEndTime() - anMap.get("Bodo - GER").getStartTime());
-        System.out.println(anMap.get("Carl - USA").getEndTime() - anMap.get("Michael - USA").getStartTime());
-        System.out.println(anMap.get("Usain - JAM").getEndTime() - anMap.get("Asafa - JAM").getStartTime());
-        System.out.println(anMap.get("Ato - TT").getEndTime() - anMap.get("Richard - TT").getStartTime());
-        System.out.println(anMap.get("Frankie - NAM").getEndTime() - anMap.get("Daniel - NAM").getStartTime());
+        System.out.println("baton passing times:");
+        System.out.println("GER:" + (anMap.get("Bodo - GER").getStartTime() - anMap.get("Lars - GER").getEndTime()));
+        System.out.println("USA: " + (anMap.get("Michael - USA").getStartTime() - anMap.get("Carl - USA").getEndTime()));
+        System.out.println("JAM:" + (anMap.get("Asafa - JAM").getStartTime() - anMap.get("Usain - JAM").getEndTime()));
+        System.out.println("TT:" + (anMap.get("Richard - TT").getStartTime() - anMap.get("Ato - TT").getEndTime()));
+        System.out.println("NAM:" + (anMap.get("Daniel - NAM").getStartTime() - anMap.get("Frankie - NAM").getEndTime()));
     }
 
 }

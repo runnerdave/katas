@@ -23,15 +23,15 @@ public class FourByTwoRelayExecutor {
     public static void main(String... args) throws InterruptedException, BrokenBarrierException {
         Map<String, List<Runner>> allTeams;
 
-        CountDownLatch batonGER = new CountDownLatch(0);
-        CountDownLatch batonUSA = new CountDownLatch(0);
-        CountDownLatch batonJAM = new CountDownLatch(0);
-        CountDownLatch batonTT = new CountDownLatch(0);
-        CountDownLatch batonNAM = new CountDownLatch(0);
+        CountDownLatch batonGER = new CountDownLatch(1);
+        CountDownLatch batonUSA = new CountDownLatch(1);
+        CountDownLatch batonJAM = new CountDownLatch(1);
+        CountDownLatch batonTT = new CountDownLatch(1);
+        CountDownLatch batonNAM = new CountDownLatch(1);
 
         ExecutorService service = null;
         try {
-            service = Executors.newFixedThreadPool(6);
+            service = Executors.newFixedThreadPool(5);
             Runner gerRunner1 = new FirstRunner(batonGER, "Lars - GER");
             Runner gerRunner2 = new SecondRunner(batonGER, "Bodo - GER");
             List<Runner> gerRunners = new ArrayList<Runner>(Arrays.asList(gerRunner1, gerRunner2));
@@ -158,14 +158,14 @@ abstract class Runner implements Runnable {
         this.name = name;
     }
 
-    public void race() {
+    public synchronized void race() {
         long startTime = System.nanoTime();
         System.out.println(name + " started at: " + startTime);
         for (int distance = 1; distance <= 200; distance++) {
 
             if (distance % 50 == 0) {
-                 System.out.println("Distance covered by "
-                 + name + " is: " + distance + " meters");
+//                 System.out.println("Distance covered by "
+//                 + name + " is: " + distance + " meters");
             }
         }
         long endTime = System.nanoTime();
@@ -173,7 +173,7 @@ abstract class Runner implements Runnable {
         this.startTime = startTime;
         this.endTime = endTime;
         this.totalTime = (endTime - startTime);
-        System.out.println("Time taken by " + name + " is: " + totalTime);
+//        System.out.println("Time taken by " + name + " is: " + totalTime);
     }
 
     @Override
@@ -192,7 +192,11 @@ class FirstRunner extends Runner {
 
     public void run() {
         this.race();
+        System.out.println("First Runner: before " + getName() + "-baton count:" + baton.getCount() + "-baton:" + baton);
         baton.countDown();
+        System.out.println("First Runner: after " + getName() + "-baton count:" + baton.getCount() + "-baton:" + baton);
+
+
     }
 }
 
@@ -204,6 +208,7 @@ class SecondRunner extends Runner {
     public void run() {
         try {
             baton.await();
+            System.out.println("Second Runner: " + getName() + "-baton count:" + baton.getCount() + "-baton:" + baton);
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
