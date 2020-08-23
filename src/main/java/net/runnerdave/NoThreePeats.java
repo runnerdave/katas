@@ -53,25 +53,20 @@ public class NoThreePeats {
     }
 
     public static void solutionWithSimpleLoop(int[] arr) throws Exception {
-        int[] tray = {-1,-1,-1};
-        for (int j : arr) {
-            int indexInTray = findInArray(tray, j);
-            if (indexInTray == 2) {
-                throw new Exception("threepeat!!!");
-            } else if (indexInTray >= 0 && indexInTray < 2) {
-                tray[indexInTray + 1] = j;
+        for (int i = 0; i < arr.length; i++) {
+            Integer[] tray = new Integer[3];
+            tray[0] = arr[i];
+            for (int j = i + 1; j < arr.length; j++) {
+                if (tray[1] != null && tray[1] == arr[j]) {
+                    throw new Exception("threepeat!!!");
+                }
+                if (tray[0] == arr[j]) {
+                    tray[1] = arr[j];
+                }
             }
         }
     }
 
-    private static int findInArray(int[] array, int target) {
-        for (int i = 0; i < array.length; i++) {
-            if (target == array[i]) {
-                return i;
-            }
-        }
-        return -1;
-    }
 
     private static Map<Integer, Integer> populateMap(int[] arr) {
         Map<Integer, Integer> map = new HashMap<>();
@@ -93,8 +88,6 @@ public class NoThreePeats {
                 = list.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
         return mapByRepeats;
     }
-
-
 }
 
 

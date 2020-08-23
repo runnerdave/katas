@@ -17,6 +17,7 @@ public class NoThreePeatsTest {
     private int[] array2 = {1, 2, 56, 1, 6, 7, 89, 1, 67};
     private int[] array3 = {1, 2, 56, 1, 6, 7, 89, 5, 67};
     private int[] array4 = {1, 2, 56, 67, 6, 7, 6, 67, 67};
+    private int[] array5 = {1, 2, 56, 67, 6, 7, 6, 0, 67};
 
     @Test(expected = Test.None.class /* no exception expected */)
     public void testSortSolutionNoThreepeat() throws Exception {
@@ -50,6 +51,11 @@ public class NoThreePeatsTest {
         NoThreePeats.solutionWithMap(array2);
     }
 
+    @Test(expected = Test.None.class /* no exception expected */)
+    public void testSortSolutionNoThreepeatYetAnotherArray() throws Exception {
+        NoThreePeats.solutionWithSort(array5);
+    }
+
     @Test
     public void testMapSolutionThreePeatFound() {
         try {
@@ -58,6 +64,11 @@ public class NoThreePeatsTest {
         } catch (Exception e) {
             assertThat(e, Matchers.isA((Class<Exception>) e.getClass()));
         }
+    }
+
+    @Test(expected = Test.None.class /* no exception expected */)
+    public void testMapSolutionNoThreepeatAnotherArray() throws Exception {
+        NoThreePeats.solutionWithMap(array3);
     }
 
     @Test
@@ -78,5 +89,15 @@ public class NoThreePeatsTest {
         } catch (Exception e) {
             assertThat(e, Matchers.isA((Class<Exception>) e.getClass()));
         }
+    }
+
+    @Test(expected = Test.None.class /* no exception expected */)
+    public void testSimpleLoopSolutionNoThreepeatAnotherArray() throws Exception {
+        NoThreePeats.solutionWithSimpleLoop(array3);
+    }
+
+    @Test(expected = Test.None.class /* no exception expected */)
+    public void testSimpleLoopSolutionNoThreepeatYetAnotherArray() throws Exception {
+        NoThreePeats.solutionWithSimpleLoop(array5);
     }
 }
