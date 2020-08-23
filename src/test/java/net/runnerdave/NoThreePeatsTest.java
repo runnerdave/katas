@@ -18,35 +18,24 @@ public class NoThreePeatsTest {
     private int[] array3 = {1, 2, 56, 1, 6, 7, 89, 5, 67};
     private int[] array4 = {1, 2, 56, 67, 6, 7, 6, 67, 67};
 
-    @Test
-    public void testSortSolution0() {
-        try {
-            NoThreePeats.solutionWithSort(array1);
-            assertEquals(true, 1 == 1);
-        } catch (Exception e) {
-            //do nothing
-        }
+    @Test(expected = Test.None.class /* no exception expected */)
+    public void testSortSolutionNoThreepeat() throws Exception {
+        NoThreePeats.solutionWithSort(array1);
     }
 
-
     @Test
-    public void testSortSolution1() throws Exception {
+    public void testSortSolutionTreepeatFound() throws Exception {
         thrown.expect(Exception.class);
         NoThreePeats.solutionWithSort(array2);
     }
 
-    @Test
-    public void testSortSolution2() {
-        try {
-            NoThreePeats.solutionWithSort(array3);
-            assertEquals(true, 1 == 1);
-        } catch (Exception e) {
-            //do nothing
-        }
+    @Test(expected = Test.None.class /* no exception expected */)
+    public void testSortSolutionNoThreepeatAnotherArray() throws Exception {
+        NoThreePeats.solutionWithSort(array3);
     }
 
     @Test
-    public void testSortSolution3() {
+    public void testSortSolutionThreepeatFoundAnotherArray() {
         try {
             NoThreePeats.solutionWithSort(array4);
             fail("it should have thrown an exception");
@@ -56,17 +45,13 @@ public class NoThreePeatsTest {
     }
 
     @Test
-    public void testSortSolution4() {
-        try {
-            NoThreePeats.solutionWithMap(array2);
-            assertEquals(true, 1 == 1);
-        } catch (Exception e) {
-            //do nothing
-        }
+    public void testSortSolutionThreepeatFoundYetAnotherArray() throws Exception {
+        thrown.expect(Exception.class);
+        NoThreePeats.solutionWithMap(array2);
     }
 
     @Test
-    public void testSortSolution5() {
+    public void testMapSolutionThreePeatFound() {
         try {
             NoThreePeats.solutionWithMap(array4);
             fail("it should have thrown an exception");
@@ -76,9 +61,19 @@ public class NoThreePeatsTest {
     }
 
     @Test
-    public void testSortSolution6() {
+    public void testWithMapLongSolutionThreepeatFound() {
         try {
             NoThreePeats.solutionWithMapLong(array4);
+            fail("it should have thrown an exception");
+        } catch (Exception e) {
+            assertThat(e, Matchers.isA((Class<Exception>) e.getClass()));
+        }
+    }
+
+    @Test
+    public void testSimpleLoopThreepeatFound() {
+        try {
+            NoThreePeats.solutionWithSimpleLoop(array4);
             fail("it should have thrown an exception");
         } catch (Exception e) {
             assertThat(e, Matchers.isA((Class<Exception>) e.getClass()));
